@@ -6,7 +6,7 @@ const DownloadFile = () => {
 
     const handleDownload = async () => {
         try {
-            const response = await fetch('http://localhost:8000', {
+            const response = await fetch('http://test9989.loca.lt', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
