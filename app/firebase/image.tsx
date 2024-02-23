@@ -1,32 +1,59 @@
 'use client'
 import { useState } from "react";
+import axios from "axios";
 
 const DownloadFile = () => {
     const [downloadUrl, setDownloadUrl] = useState<string>('');
+    const local_route = "http://localhost:8000"
+    const local_route2 = "http://127.0.0.1:8000"
+    const develop_route = "https://test9989.loca.lt"
 
-    const handleDownload = async () => {
+    const handleDownloadGet = async () => {
         try {
-            const response = await fetch('https://test9989.loca.lt', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ file_path: 'test1/test.png' }),
-            });
+            const response = await axios.get(`${local_route}/image?file_path=test1/test.png`);
 
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-
-            const data = await response.json();
-            setDownloadUrl(data.download_url);
+            setDownloadUrl(response.data.download_url);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
     };
+
+    const handleDownload = async() => {
+        try {
+            const response = await axios.post(`${local_route}/image`, {
+                file_path: 'test1/test.png'
+            });
+            
+            setDownloadUrl(response.data.download_url);
+        } catch (error) {
+            console.error('Error fetching data:', error)
+        }
+    };
+
+    //Without axios
+    // const handleDownload = async () => {
+    //     try {
+    //         const response = await fetch(`${local_route}/image`, {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify({ file_path: 'test1/test.png' }),
+    //         });
+
+    //         if (!response.ok) {
+    //             throw new Error('Failed to fetch data');
+    //         }
+
+    //         const data = await response.json();
+    //         setDownloadUrl(data.download_url);
+    //     } catch (error) {
+    //         console.error('Error fetching data:', error);
+    //     }
+    // };
     return (
         <div>
-            <button onClick={handleDownload}>Get Download URL</button>
+            <button onClick={handleDownloadGet}>Get Download URL</button>
             {downloadUrl && (
                 <div>
                     <p>Downloaded Image</p>

@@ -2,9 +2,11 @@ import DownloadFile from "./image";
 
 const Page = () => {
     return (
-        <div>
-            <h1>Test Image</h1>
-            <DownloadFile />
+        <div className="w-full">
+            <div className="fles w-full items-center justify-between">
+                <h1>Test Image</h1>
+                <DownloadFile />
+            </div>
         </div>
     )
 }
