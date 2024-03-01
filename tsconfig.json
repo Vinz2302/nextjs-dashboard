@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     "app/lib/placeholder-data.js",
     "scripts/seed.js"
-  ],
+, "app/lib/firestore.tsx", "app/dashboard/harvest/page.tsx", "app/lib/needlePie.js"  ],
   "exclude": ["node_modules"]
 }

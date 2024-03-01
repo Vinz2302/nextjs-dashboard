@@ -4,20 +4,28 @@ import AcmeLogo from '@/app/ui/acme-logo';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { GiFallingLeaf } from 'react-icons/gi';
 import { signOut } from '@/auth';
+import { inter, lusitana } from '../fonts';
 
 export default function SideNav() {
   return (
     <div className="flex h-full flex-col px-3 py-4 md:px-2">
-      <Link
-        className="mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40"
+      {/* <Link
+        className="mb-2 flex h-20 items-end justify-start rounded-md bg-green-600 p-4 md:h-40"
         href="/"
       >
-        <div className="w-32 text-white md:w-40">
-          <GiFallingLeaf className="text-8xl" />
-          <GiFallingLeaf className="text-4xl" />
-          <GiFallingLeaf className="text-2xl" />
+        <div className="text-white">
+          <GiFallingLeaf className="text-6xl" />
+        </div>
+      </Link> */}
+      <Link href="/">
+        <div className="mb-2 flex h-20 items-center justify-start rounded-md bg-green-600 p-3 md:h-40 md:shadow-md hover:bg-green-800 cursor-pointer">
+          <div className="text-white">
+            <GiFallingLeaf className="text-5xl" />
+          </div>
+          <h1 className={`${lusitana.className} ml-2 text-3xl font-bold text-white`}>Hidroponik</h1>
         </div>
       </Link>
+
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
         <NavLinks />
         <div className="hidden h-auto w-full grow rounded-md bg-gray-50 md:block"></div>
