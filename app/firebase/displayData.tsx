@@ -54,22 +54,26 @@ async function HidroponikData() {
         <>
 
             <Card   title="Light" 
-                    value={`${data.light} lux`} 
+                    // value={`${data.light} lux`} 
+                    value={`50 lux`} 
                     type="lights" 
             />
 
             <Card   title="Humidity" 
-                    value={`${data.humidity} %`} 
+                    // value={`${data.humidity} %`} 
+                    value={`50 %`} 
                     type="humidities" 
             />
 
             <Card   title="Air Temperature" 
-                    value={`${data.air_temperature} °C`}
+                    // value={`${data.air_temperature} °C`}
+                    value={`20 °C`}
                     type="airTemperatures" 
             />
 
             <Card   title="Water Temperature" 
-                    value={`${data.water_temperature} °C`}
+                    // value={`${data.water_temperature} °C`}
+                    value={`18 °C`}
                     type="waterTemperatures" 
             />
 
