@@ -18,7 +18,7 @@ export default function SideNav() {
         </div>
       </Link> */}
       <Link href="/">
-        <div className="mb-2 flex h-20 items-center justify-start rounded-md bg-green-600 p-3 md:h-40 md:shadow-md hover:bg-green-800 cursor-pointer">
+        <div className="mb-2 flex h-20 items-center justify-start rounded-md bg-gradient-to-r from-sky-400 to-green-400 p-3 md:h-40 md:shadow-md cursor-pointer">
           <div className="text-white">
             <GiFallingLeaf className="text-5xl" />
           </div>
