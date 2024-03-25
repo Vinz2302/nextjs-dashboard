@@ -15,7 +15,7 @@ const DownloadFile = () => {
         setError(null)
         setIsLoading(true);
         try {
-            const response = await axios.get(`${local_route}/image?file_path=test1/test.png`);
+            const response = await axios.get(`${local_route}/image?file_path=test1/pameran.jpg`);
             setDownloadUrl(response.data.download_url);
         } catch (error) {
             console.error('Error fetching data:', error);
@@ -45,8 +45,8 @@ const DownloadFile = () => {
             {error && <p className="text-red-500">{error}</p>}
             {downloadUrl && (
                 <div>
-                    <p>Downloaded Image</p>
                     <img src={downloadUrl} alt="Downloaded Image" style={{ maxWidth: '100%' }} />
+                    <p>Crops Records</p>
                 </div>
             )}
         </div>
