@@ -11,7 +11,7 @@ export default async function Page() {
             </h1>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                 <Suspense fallback={<CardsSkeleton />}>
-                    {/* <HidroponikData /> */}
+                    <HidroponikData />
                 </Suspense>
             </div>
         </main>

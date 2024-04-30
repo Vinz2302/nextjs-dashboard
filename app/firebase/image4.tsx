@@ -39,7 +39,7 @@ const DownloadFile = () => {
                     className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-700"
                     onClick={handleDownloadGet}
                 >
-                    Harvest Segment 1
+                    Harvest Segment 4
                 </button>
             )}
             {error && <p className="text-red-500">{error}</p>}
