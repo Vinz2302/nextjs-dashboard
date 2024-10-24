@@ -25,6 +25,7 @@ export default function HidroponikData() {
     const [data, setData] = useState<DocumentData | null>(null);
     const [error, setError] = useState<Error | null>(null);
 
+    //reading data from firebase
     useEffect(() => {
         const unsubscribe = onSnapshot(doc(db, "data", "hidroponik"), (doc) => {
             if (doc.exists()) {
@@ -70,30 +71,30 @@ export default function HidroponikData() {
 
         <>
             <Card   title="Light" 
-                    value={`${data.light} lux`} 
-                    // value={`50 lux`} 
+                    // value={`${data.light} lux`} 
+                    value={`50 lux`}
                     type="lights" 
                     status={getLightStatus(data.light)}
             />
 
             <Card   title="Humidity" 
-                    value={`${data.humidity} %`} 
-                    // value={`50 %`} 
+                    // value={`${data.humidity} %`} 
+                    value={`50 %`} 
                     type="humidities" 
                     status={getHumidity(data.humidity)}
             />
             
             <Card   title="Air Temperature" 
-                    value={`${data.air_temperature} °C`}
-                    // value={`30 °C`}
+                    // value={`${data.air_temperature} °C`}
+                    value={`30 °C`}
                     type="airTemperatures" 
                     status={getAirTemperature(data.air_temperature)}
             />
 
             <Card   title="Water Temperature" 
-                    value={`${data.water_temperature} °C`}
-                    // value={`18 °C`}
-                    type="waterTemperatures" 
+                    // value={`${data.water_temperature} °C`}
+                    value={`18 °C`}
+                    type="waterTemperatures"
                     status={getWaterTemperature(data.water_temperature)}
             />
         </>
