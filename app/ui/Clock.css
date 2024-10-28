@@ -1,0 +1,12 @@
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  svg {
+    background-color: #f8f9fa;
+    border-radius: 50%;
+  }
+  

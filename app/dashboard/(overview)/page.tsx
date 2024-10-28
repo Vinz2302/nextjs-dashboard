@@ -12,13 +12,26 @@ import { Suspense } from 'react';
 import {    RevenueChartSkeleton,
             LatestInvoicesSkeleton,
             CardsSkeleton,
+            CardSkeleton,
  } from '@/app/ui/skeletons';
 
-// export default function Page() {
+async function Page2() {
     // return <p>Dashboard Page - Vinz</p>
-// }
+    return (
+        <main>
+            <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+                Testing
+            </h1>
+            <div>
+                {/* <Suspense fallback={<CardSkeleton/>}>
+                    <CardWrapper/>
+                </Suspense> */}
+            </div>
+        </main>
+    )
+}
 
-export default async function Page() {
+async function Page() {
     // const revenue = await fetchRevenue();
     // const latestInvoices = await fetchLatestInvoices();
     const {
@@ -58,3 +71,6 @@ export default async function Page() {
         </main>
     )
 }
+
+// export default Page;
+export default Page2;
