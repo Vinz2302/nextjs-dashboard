@@ -4,7 +4,8 @@ import {
   UserGroupIcon,
   HomeIcon,
   DocumentDuplicateIcon,
-  ArchiveBoxArrowDownIcon
+  ArchiveBoxArrowDownIcon,
+  ClockIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -22,6 +23,7 @@ const links = [
   // },
   // { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
   { name: 'Harvest', href: '/dashboard/harvest', icon: ArchiveBoxArrowDownIcon },
+  { name: 'Clock', href: '/dashboard/clock', icon: ClockIcon },
 ];
 
 export default function NavLinks() {

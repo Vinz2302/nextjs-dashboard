@@ -3,7 +3,7 @@ import {
 } from '@heroicons/react/24/outline';
 import React, { useState } from 'react';
 import '../Clock.css';
-import { scheduler } from 'timers/promises';
+// import { scheduler } from 'timers/promises';
 
 const Clock = () => {
     const schedule = [
@@ -38,13 +38,32 @@ const Clock = () => {
 
             return(
                 <g key={index}>
-                    <path d={pathData} ></path>
+                    <path d={pathData} fill={`hsl(${(index * 50) % 360}, 70%, 80%)`} stroke="black" />
+                    <text
+                        x={(startX + endX) / 2}
+                        y={(startY + endY) / 2}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        transform={`rotate(${(startAngle + endAngle) / 2}, ${(startX + endX) / 2}, ${(startY + endY) / 2})`}
+                        style={{ fontSize: '12px' }}
+                    >
+                        {label}
+                    </text>
                 </g>
             )
         })
     }
-}
+    return (
+        <div className='clock-retainer'>
+            <svg width="300" height="300" viewBox="0 0 300 300">
+                <circle cx="150" cy="150" r="120" fill="white" stroke="black" strokeWidth="3" />
+                {renderSegments()}
+            </svg>
+        </div>
+    );
+};
 
+export default Clock;
 
 // const Wheel = () => {
 //     const [rotation, setRotation] = useState(0);
