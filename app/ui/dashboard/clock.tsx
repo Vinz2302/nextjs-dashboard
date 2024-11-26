@@ -75,14 +75,14 @@ interface Schedule {
 }
 
 const schedules: Schedule[] = [
-  { label: "Tidur", startAngle: -90, endAngle: -60 },
-  { label: "Bangun", startAngle: -60, endAngle: -30 },
-  { label: "Clean up", startAngle: -30, endAngle: 0 },
-  { label: "Olahraga", startAngle: 0, endAngle: 30 },
-  { label: "Nonton", startAngle: 30, endAngle: 60 },
-  { label: "Ngoding", startAngle: 60, endAngle: 120 },
-  { label: "Rebahan", startAngle: 120, endAngle: 180 },
-  { label: "Ngoding", startAngle: 180, endAngle: 240 },
+  { label: "Bobo", startAngle: -90, endAngle: 15 },
+  { label: "Clean up", startAngle: 15, endAngle: 30 },
+  { label: "Kerjaaa", startAngle: 30, endAngle: 165 },
+  { label: "Pulang", startAngle: 165, endAngle: 180 },
+  { label: `Beres"`, startAngle: 180, endAngle: 195 },
+  { label: "Workout", startAngle: 195, endAngle: 210 },
+  { label: "Mandi", startAngle: 210, endAngle: 225 },
+  { label: "Rebahan", startAngle: 225, endAngle: 270 },
 ];
 
 const AnalogClock: React.FC = () => {
@@ -265,6 +265,24 @@ const AnalogClock2: React.FC = () => {
             const { x: x1, y: y1 } = getCoordinatesForAngle(angle, 15);
             const { x: x2, y: y2 } = getCoordinatesForAngle(angle, 5);
             return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} className="stroke-black stroke-[1px]" />;
+          })}
+
+          {/* Section dividing lines */}
+          {schedules.map((schedule, i) => {
+            const { x: x1, y: y1 } = getCoordinatesForAngle(schedule.startAngle, 0); // Start at the center
+            const { x: x2, y: y2 } = getCoordinatesForAngle(schedule.startAngle, radius); // Extend to the edge
+
+            return (
+              <line
+                key={`line-${i}`}
+                x1={x1}
+                y1={y1}
+                x2={x2}
+                y2={y2}
+                stroke="gray"
+                strokeWidth="0.3"
+              />
+            );
           })}
   
           {/* Schedules */}
