@@ -4,6 +4,10 @@ import {
 import React, { useEffect, useState } from 'react';
 import '../Clock.css';
 import { lusitana } from "@/app/ui/fonts"
+import { date } from 'zod';
+// import { zonedTimeToUtc, utcToZonedTime, format } from 'date-fns-tz';
+import { toZonedTime } from 'date-fns-tz';
+
 // import { scheduler } from 'timers/promises';
 
 const Clock = () => {
@@ -96,7 +100,8 @@ const AnalogClock: React.FC = () => {
     // Calculate angles for the clock hands
     const secondsAngle = (time.getSeconds() / 60) * 360;
     const minutesAngle = (time.getMinutes() / 60) * 360 + (time.getSeconds() / 60) * 6;
-    const hoursAngle = (time.getHours() % 12 / 12) * 360 + (time.getMinutes() / 60) * 30;
+    // const hoursAngle = (time.getHours() % 12 / 12) * 360 + (time.getMinutes() / 60) * 30;
+    const hoursAngle = (time.getHours() % 24 ) * 15 + (time.getMinutes() / 60 ) * 15;
 
     const radius = 95; //radius for the clock face
     const center = 100; //center point for svg (half of viewbox size)
@@ -224,14 +229,19 @@ const AnalogClock2: React.FC = () => {
     const [time, setTime] = useState(new Date());
   
     useEffect(() => {
-      const interval = setInterval(() => setTime(new Date()), 1000);
+      const interval = setInterval(() => {
+        setTime(new Date());
+      }, 1000);
       return () => clearInterval(interval); // Cleanup on component unmount
     }, []);
+
+    const jakartaTimezone = 'Asia/Jakarta';
+    const jakartaTime = toZonedTime( time, jakartaTimezone)
   
     // Calculate angles for the clock hands
-    const secondsAngle = (time.getSeconds() / 60) * 360;
-    const minutesAngle = (time.getMinutes() / 60) * 360 + (time.getSeconds() / 60) * 6;
-    const hoursAngle = (time.getHours() % 12 / 12) * 360 + (time.getMinutes() / 60) * 30;
+    const secondsAngle = (jakartaTime.getSeconds() / 60) * 360; // Seconds move 360° in 60 steps
+    const minutesAngle = ((jakartaTime.getMinutes() / 60) * 360 + (jakartaTime.getSeconds() / 60) * 6 ) - 90; // Minutes move 360° in 60 steps
+    const hoursAngle = ((jakartaTime.getHours() % 24 ) * 15 + (jakartaTime.getMinutes() / 60) * 15 ) - 90; // Hours move 360° in 12 steps
 
     const radius = 150;
     const center = 200;
@@ -312,6 +322,7 @@ const AnalogClock2: React.FC = () => {
           {/* Clock Hour number ( 1 - 24 ) */}
           {[...Array(24)].map((_, i) => {
             const angle = ((i + 7) / 24 ) * 360;
+            // const angle = ((i - 6) / 24) * 360; // 24-hour clock alignment
             const { x, y } = getCoordinatesForAngle(angle, outerRadius);
             return (
               <text
@@ -371,6 +382,14 @@ const AnalogClock2: React.FC = () => {
             Play!
           </text>
         </svg>
+
+        {/* Display current Jakarta time */}
+        <div className="text-center mt-4">
+          <h3 className="text-xl font-semibold">
+            Current Time in Jakarta (WIB)
+          </h3>
+          <p className="text-lg">{time.toLocaleTimeString('id-ID')}</p>
+        </div>
       </div>
     );
   };
