@@ -5,6 +5,7 @@ import { PowerIcon } from '@heroicons/react/24/outline';
 import { GiFallingLeaf } from 'react-icons/gi';
 import { signOut } from '@/auth';
 import { inter, lusitana } from '../fonts';
+import { BsPerson } from 'react-icons/bs';
 
 export default function SideNav() {
   return (
@@ -20,9 +21,10 @@ export default function SideNav() {
       <Link href="/">
         <div className="mb-2 flex h-20 items-center justify-start rounded-md bg-gradient-to-r from-sky-400 to-green-400 p-3 md:h-40 md:shadow-md cursor-pointer">
           <div className="text-white">
-            <GiFallingLeaf className="text-5xl" />
+            {/* <GiFallingLeaf className="text-5xl" /> */}
+            <BsPerson className='text-5xl'/>
           </div>
-          <h1 className={`${lusitana.className} ml-2 text-3xl font-bold text-white`}>Hidroponik</h1>
+          <h1 className={`${lusitana.className} ml-2 text-2xl font-bold text-white`}>Personal Web</h1>
         </div>
       </Link>
 

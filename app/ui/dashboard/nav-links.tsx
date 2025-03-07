@@ -6,6 +6,7 @@ import {
   DocumentDuplicateIcon,
   ArchiveBoxArrowDownIcon,
   ClockIcon,
+  CurrencyDollarIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,6 +25,7 @@ const links = [
   // { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
   { name: 'Harvest', href: '/dashboard/harvest', icon: ArchiveBoxArrowDownIcon },
   { name: 'Clock', href: '/dashboard/clock', icon: ClockIcon },
+  { name: 'Tracker', href: '/dashboard/expense', icon: CurrencyDollarIcon},
 ];
 
 export default function NavLinks() {
